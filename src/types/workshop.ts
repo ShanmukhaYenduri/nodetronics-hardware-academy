@@ -1,6 +1,6 @@
 
 export interface Workshop {
-  id: number;
+  id: number | string;
   title: string;
   instructor: string;
   date: string;
@@ -20,6 +20,7 @@ export interface Workshop {
   outcomes: string[];
   status: string;
   url?: string;
+  discountPrice?: number;
 }
 
 export interface PastWorkshop {
