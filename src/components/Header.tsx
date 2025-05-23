@@ -20,7 +20,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <img 
-              src="/lovable-uploads/b46bf6d2-e853-4713-b065-d8cbd0c79408.png" 
+              src="/lovable-uploads/Logo-Horizontal.svg" 
               alt="Nodetronics Technology" 
               className="h-10 w-auto group-hover:scale-105 transition-transform duration-300"
             />

@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <img 
-              src="/lovable-uploads/9ae43df7-7fbc-4572-8dbc-885c9d49cb82.png" 
+              src="/lovable-uploads/Logo-Horizontal.svg" 
               alt="Nodetronics Technology" 
               className="h-12 w-auto brightness-0 invert"
             />
