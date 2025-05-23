@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Book, Calendar, Award, Progress, Clock, Star, Video, Download, ChevronRight, Play } from 'lucide-react';
+import { Book, Calendar, Award, Clock, Star, Video, Download, ChevronRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
