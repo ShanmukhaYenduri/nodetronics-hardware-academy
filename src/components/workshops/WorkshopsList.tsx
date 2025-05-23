@@ -34,7 +34,11 @@ const WorkshopsList: React.FC<WorkshopsListProps> = ({ workshops }) => {
         'Lifetime Access to Materials',
         '2 Weeks Post-Workshop Support'
       ],
-      url: '/workshops/smart-tracker'
+      url: '/workshops/smart-tracker',
+      // Add the missing properties required by the Workshop interface
+      prerequisites: ['Basic programming knowledge', 'No hardware experience required'],
+      outcomes: ['Build functional tracker device', 'ESP32 programming skills', 'Bluetooth integration', 'Mobile app connection'],
+      status: 'upcoming'
     },
     ...workshops
   ];
