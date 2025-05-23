@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Calendar, Clock, Users, MapPin, Video, Star, ArrowRight, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -19,35 +18,36 @@ const Workshops = () => {
       title: "Build Your First IoT Weather Station",
       instructor: "Dr. Sarah Johnson",
       date: "2024-01-15",
-      time: "10:00 AM - 4:00 PM EST",
+      time: "10:00 AM - 4:00 PM IST",
       duration: "6 hours",
       type: "Live Online",
       level: "Beginner",
       category: "IoT",
       participants: 45,
       maxParticipants: 50,
-      price: 149,
+      price: 9999,
       rating: 4.9,
       image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=250&fit=crop",
       description: "Learn to build a complete IoT weather station using ESP32, sensors, and cloud dashboard.",
       prerequisites: ["Basic programming knowledge", "No hardware experience required"],
       included: ["ESP32 Development Kit", "Sensor Kit", "Breadboard & Jumpers", "Lifetime Access to Materials"],
       outcomes: ["Build functional weather station", "ESP32 programming skills", "IoT cloud integration", "Real-time data visualization"],
-      status: "upcoming"
+      status: "upcoming",
+      url: "/workshops/iot-weather-station"
     },
     {
       id: 2,
       title: "Robotic Arm Control with ROS",
       instructor: "Prof. Michael Chen",
       date: "2024-01-22",
-      time: "2:00 PM - 8:00 PM EST",
+      time: "2:00 PM - 8:00 PM IST",
       duration: "6 hours",
       type: "Live Online",
       level: "Intermediate",
       category: "Robotics",
       participants: 28,
       maxParticipants: 30,
-      price: 199,
+      price: 14999,
       rating: 4.8,
       image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop",
       description: "Master robotic arm programming using ROS framework and inverse kinematics.",
@@ -61,14 +61,14 @@ const Workshops = () => {
       title: "Advanced 3D Printing Techniques",
       instructor: "Emily Rodriguez",
       date: "2024-01-29",
-      time: "11:00 AM - 5:00 PM EST",
+      time: "11:00 AM - 5:00 PM IST",
       duration: "6 hours",
       type: "Hybrid",
       level: "Advanced",
       category: "3D Printing",
       participants: 35,
       maxParticipants: 40,
-      price: 179,
+      price: 12999,
       rating: 4.7,
       image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=250&fit=crop",
       description: "Explore advanced 3D printing materials, multi-color printing, and post-processing techniques.",
@@ -82,14 +82,14 @@ const Workshops = () => {
       title: "PCB Design Masterclass",
       instructor: "Dr. Alex Kumar",
       date: "2024-02-05",
-      time: "9:00 AM - 3:00 PM EST",
+      time: "9:00 AM - 3:00 PM IST",
       duration: "6 hours",
       type: "Live Online",
       level: "Intermediate",
       category: "PCB Design",
       participants: 22,
       maxParticipants: 25,
-      price: 229,
+      price: 16999,
       rating: 4.9,
       image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&h=250&fit=crop",
       description: "Professional PCB design workflow from schematic to manufacturing-ready boards.",
@@ -209,7 +209,7 @@ const Workshops = () => {
                       </div>
                       <div className="absolute top-4 right-4">
                         <div className="bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-gray-900">
-                          ${workshop.price}
+                          ₹{workshop.price}
                         </div>
                       </div>
                     </div>
@@ -268,9 +268,14 @@ const Workshops = () => {
                         </ul>
                       </div>
                       
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg group">
-                        Register Now
-                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      <Button 
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg group"
+                        asChild
+                      >
+                        <a href={workshop.url || "#"}>
+                          Register Now
+                          <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </a>
                       </Button>
                     </CardContent>
                   </Card>
