@@ -9,6 +9,7 @@ const WorkshopsHeader: React.FC = () => {
       </h1>
       <p className="text-xl text-gray-600 max-w-3xl mx-auto">
         Join our intensive hands-on workshops and learn from industry experts through practical projects.
+        All prices are in Indian Rupees (₹).
       </p>
     </div>
   );

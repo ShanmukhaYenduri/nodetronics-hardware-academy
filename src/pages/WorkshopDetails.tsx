@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Calendar, Clock, Users, MapPin, Video, Star, Check, ArrowRight, IndianRupee } from 'lucide-react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Calendar, Clock, Users, Video, Star, Check, ArrowRight, IndianRupee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -143,11 +142,121 @@ const workshopData = {
         description: "Troubleshooting, project ideas, and resources for further learning."
       }
     ]
+  },
+  'smart-tracker': {
+    title: "Build Your Own Smart Tracker — Like JioTag & AirTag!",
+    instructor: "Yashwanth Chityala",
+    instructorTitle: "IoT Expert & Embedded Systems Engineer",
+    instructorImage: "https://learn.nodetronics.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fyashwanth-teaching.70d0bc5a.png&w=1920&q=75",
+    instructorDescription: "Yashwanth Chityala has collaborated with IIT Madras on cutting-edge IoT projects and brings unparalleled expertise as a highly skilled embedded systems engineer.",
+    date: "2025-06-13",
+    time: "10:00 AM - 1:00 PM IST",
+    duration: "3 days",
+    type: "Live Online",
+    level: "Beginner",
+    category: "IoT",
+    participants: 46,
+    maxParticipants: 50,
+    price: 1299,
+    discountPrice: 499,
+    rating: 4.8,
+    image: "https://images.unsplash.com/photo-1580508021100-ace82bda6be5?w=1200&h=600&fit=crop",
+    description: "Learn to build a complete IoT smart tracker using ESP32, Bluetooth, and mobile integration in this hands-on workshop.",
+    longDescription: "This comprehensive 3-day workshop will teach you to build a real-world Smart Tracker device like JioTag and AirTag from scratch. No prior experience needed! You'll learn IoT fundamentals, ESP32 programming, Bluetooth Low Energy communication, and much more through hands-on sessions.",
+    prerequisites: [
+      "No prior experience needed",
+      "Basic computer skills",
+      "Curiosity to learn",
+      "Computer with internet connection"
+    ],
+    included: [
+      "ESP32 Development Kit",
+      "Project Templates & Code Library",
+      "Free Lifetime Community Access",
+      "Direct WhatsApp Support",
+      "Certificate of Completion",
+      "Premium E-books and learning resources",
+      "Personal mentorship and career guidance",
+      "Discount for Premium IoT Masterclass"
+    ],
+    outcomes: [
+      "Build a complete IoT smart tracker from scratch",
+      "Learn ESP32 programming for IoT devices",
+      "Master Bluetooth Low Energy (BLE) communication",
+      "Understand real-time device tracking principles",
+      "Design energy-efficient IoT solutions",
+      "Implementation of mobile device connectivity",
+      "Troubleshoot common IoT connectivity issues",
+      "Create custom alerts based on sensor data"
+    ],
+    skills: [
+      "IoT Development",
+      "ESP32 Programming",
+      "Bluetooth Low Energy",
+      "Embedded Systems",
+      "Mobile Integration",
+      "Wireless Communication",
+      "Hardware Integration"
+    ],
+    faq: [
+      {
+        question: "Do I need any prior experience or technical knowledge?",
+        answer: "No prior experience is needed. This workshop is beginner-friendly and starts from the very basics."
+      },
+      {
+        question: "What will I learn apart from building the tracker?",
+        answer: "Beyond building a tracker, you'll learn IoT fundamentals, microcontroller programming, Bluetooth communication, mobile app integration, and product development skills."
+      },
+      {
+        question: "What is the duration of the workshop?",
+        answer: "The workshop runs for 3 consecutive days, with approximately 3 hours of live session each day."
+      },
+      {
+        question: "Will I get support if I face issues during the project build?",
+        answer: "Absolutely! You'll have direct access to Yashwanth and the Nodetronics team via WhatsApp for technical support."
+      }
+    ],
+    reviews: [
+      {
+        name: "Rahul Kumar",
+        rating: 5,
+        comment: "Fantastic workshop! I had zero experience with IoT but managed to build a working smart tracker by the end of the third day. Yashwanth is an excellent instructor!"
+      },
+      {
+        name: "Priya Singh",
+        rating: 4,
+        comment: "Very practical approach to learning IoT. The hands-on experience was invaluable, and the post-workshop support helped me overcome some technical challenges."
+      },
+      {
+        name: "Arjun Mehta",
+        rating: 5,
+        comment: "Worth every rupee! The bonuses alone are worth the price, but the workshop itself was incredibly educational and fun."
+      }
+    ],
+    agenda: [
+      {
+        time: "Day 1",
+        title: "Introduction to Smart Hardware & Bluetooth",
+        description: "Learn IoT fundamentals, ESP32 basics, and Bluetooth Low Energy (BLE) principles."
+      },
+      {
+        time: "Day 2",
+        title: "Build Your Smart Tracker (Hands-On)",
+        description: "Design and implement smart tracker logic, real-time pairing, and sensor data processing."
+      },
+      {
+        time: "Day 3",
+        title: "Final Integration, Going Live & Certification",
+        description: "Complete your project, optimize performance, and get certified with your working smart tracker."
+      }
+    ],
+    url: '/workshops/smart-tracker' // Direct link to the dedicated landing page
   }
 };
 
 const WorkshopDetails = () => {
   const { workshopId } = useParams<{ workshopId: string }>();
+  const navigate = useNavigate();
   const [couponCode, setCouponCode] = useState('');
   const [appliedDiscount, setAppliedDiscount] = useState(0);
   const [isApplying, setIsApplying] = useState(false);
@@ -168,6 +277,12 @@ const WorkshopDetails = () => {
         </div>
       </div>
     );
+  }
+
+  // For Smart Tracker workshop, redirect to the dedicated landing page
+  if (workshopId === 'smart-tracker') {
+    navigate('/workshops/smart-tracker');
+    return null;
   }
 
   const formatDate = (dateString: string) => {
@@ -563,58 +678,70 @@ const WorkshopDetails = () => {
                     <div className="space-y-3 mb-4">
                       <div className="flex items-center">
                         <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                          <Calendar className="w-3 h-3 text-blue-600" />
+                          <Check className="w-3 h-3 text-blue-600" />
                         </div>
-                        <span className="text-sm">{formatDate(workshop.date)}</span>
+                        <span>Live, interactive sessions</span>
                       </div>
                       <div className="flex items-center">
                         <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                          <Clock className="w-3 h-3 text-blue-600" />
+                          <Check className="w-3 h-3 text-blue-600" />
                         </div>
-                        <span className="text-sm">{workshop.time}</span>
+                        <span>All hardware included</span>
                       </div>
                       <div className="flex items-center">
                         <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                          <Users className="w-3 h-3 text-blue-600" />
+                          <Check className="w-3 h-3 text-blue-600" />
                         </div>
-                        <span className="text-sm">{workshop.participants}/{workshop.maxParticipants} participants</span>
+                        <span>Certificate of completion</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                          <Check className="w-3 h-3 text-blue-600" />
+                        </div>
+                        <span>2 weeks post-workshop support</span>
                       </div>
                     </div>
                     
-                    <div className="mt-4">
+                    <div className="mt-6">
+                      <div className="flex gap-2 mb-4">
+                        <Input 
+                          placeholder="Coupon code" 
+                          className="flex-grow" 
+                          value={couponCode}
+                          onChange={(e) => setCouponCode(e.target.value)}
+                        />
+                        <Button 
+                          variant="outline" 
+                          onClick={handleApplyCoupon}
+                          disabled={isApplying || !couponCode}
+                        >
+                          Apply
+                        </Button>
+                      </div>
+                      
+                      {appliedDiscount > 0 && (
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+                          <div className="flex items-center justify-between">
+                            <div className="text-green-700 font-medium">Coupon Applied!</div>
+                            <div className="text-green-700 font-medium">-₹{appliedDiscount}</div>
+                          </div>
+                          <div className="text-green-600 text-sm">
+                            You saved ₹{appliedDiscount} with {couponCode}
+                          </div>
+                        </div>
+                      )}
+                      
                       <Button 
-                        className="w-full bg-blue-600 hover:bg-blue-700" 
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-lg py-6" 
                         size="lg"
                         onClick={handleProceedToPayment}
                       >
-                        Register Now
+                        Register Now <ArrowRight className="ml-2" />
                       </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-                
-                {/* Share Card */}
-                <Card className="shadow-md overflow-hidden bg-white border-0 mt-4">
-                  <CardContent className="p-6">
-                    <h3 className="font-bold mb-4">Share this Workshop</h3>
-                    <div className="flex space-x-2">
-                      <Button variant="outline" className="flex-1 h-9">
-                        <svg className="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.54 10.54 0 01-3.125 1.196 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                        </svg>
-                        Tweet
-                      </Button>
-                      <Button variant="outline" className="flex-1 h-9">
-                        <svg className="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-3 7h-1.924c-.615 0-1.076.252-1.076.889v1.111h3l-.238 3h-2.762v8h-3v-8h-2v-3h2v-1.923c0-2.022 1.064-3.077 3.461-3.077h2.539v3z"/>
-                        </svg>
-                        Share
-                      </Button>
-                      <Button variant="outline" className="h-9 w-9 p-0 flex items-center justify-center">
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M19.825 5.525l-3.356-3.344-1.413 1.414 3.356 3.344 1.413-1.414zm4.175 10.475c0 2.485-2.016 4.5-4.5 4.5-1.863 0-3.459-1.131-4.146-2.741l-7.854-3.143v3.384h-7.5v-7.5h7.5v3.384l7.854-3.143c.687-1.61 2.283-2.741 4.146-2.741 2.484 0 4.5 2.015 4.5 4.5s-2.016 4.5-4.5 4.5z"/>
-                        </svg>
-                      </Button>
+                      
+                      <p className="text-sm text-gray-500 text-center mt-3">
+                        Secure payment powered by Razorpay
+                      </p>
                     </div>
                   </CardContent>
                 </Card>

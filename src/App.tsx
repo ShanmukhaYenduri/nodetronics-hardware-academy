@@ -13,6 +13,9 @@ import Blog from "./pages/Blog";
 import Dashboard from "./pages/Dashboard";
 import CouponManagement from "./pages/admin/CouponManagement";
 import NotFound from "./pages/NotFound";
+import SmartTrackerWorkshop from "./pages/SmartTrackerWorkshop";
+import SmartTrackerRegistration from "./pages/SmartTrackerRegistration";
+import SmartTrackerPayment from "./pages/SmartTrackerPayment";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +46,12 @@ const App = () => (
           <Route path="/workshops/:workshopId" element={<WorkshopDetails />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/blog" element={<Blog />} />
+          
+          {/* New Smart Tracker Workshop Routes */}
+          <Route path="/workshops/smart-tracker" element={<SmartTrackerWorkshop />} />
+          <Route path="/workshops/smart-tracker/register" element={<SmartTrackerRegistration />} />
+          <Route path="/workshops/smart-tracker/payment" element={<SmartTrackerPayment />} />
+          
           <Route 
             path="/dashboard" 
             element={
